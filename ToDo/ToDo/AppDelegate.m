@@ -28,6 +28,11 @@
     UINavigationController *mainVC = [[UINavigationController alloc]initWithRootViewController:homeVC];
     
     WWSideslipViewController *handleVC = [[WWSideslipViewController alloc]initWithLeftView:settingVC andMainView:mainVC andRightView:addVC andBackgroundImage:[UIImage imageNamed:@"6"]];
+    //设置动画速度
+    [handleVC setSpeedf:0.5];
+    //设置点击中间视图是否恢复状态
+    handleVC.sideslipTapGes.enabled = YES;
+    
     self.window.rootViewController = handleVC;
     [self.window makeKeyAndVisible];
     

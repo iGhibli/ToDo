@@ -7,6 +7,7 @@
 //
 
 #import "HomeVC.h"
+#import "WWSideslipViewController.h"
 
 @interface HomeVC ()
 
@@ -17,16 +18,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"清单列表";
-    UIBarButtonItem *meunItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"meun"] style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIBarButtonItem *meunItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"meun"] style:UIBarButtonItemStyleDone target:self action:@selector(meunBtnAction)];
     self.navigationItem.leftBarButtonItem = meunItem;
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:self action:@selector(addBtnAction)];
     self.navigationItem.rightBarButtonItem = addItem;
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)meunBtnAction
+{
+    WWSideslipViewController *VC = [WWSideslipViewController new];
+    [VC showLeftView];
+}
+
+- (void)addBtnAction
+{
+    WWSideslipViewController *VC = [WWSideslipViewController new];
+    [VC showRighView];
 }
 
 #pragma mark - Table view data source
