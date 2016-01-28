@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "SettingVC.h"
+#import "HomeVC.h"
+#import "AddVC.h"
+#import "WWSideslipViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +21,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    SettingVC *settingVC = [[SettingVC alloc]init];
+    HomeVC *homeVC = [[HomeVC alloc]init];
+    AddVC *addVC = [[AddVC alloc]init];
+    UINavigationController *mainVC = [[UINavigationController alloc]initWithRootViewController:homeVC];
+    
+    WWSideslipViewController *handleVC = [[WWSideslipViewController alloc]initWithLeftView:settingVC andMainView:mainVC andRightView:addVC andBackgroundImage:[UIImage imageNamed:@"6"]];
+    self.window.rootViewController = handleVC;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

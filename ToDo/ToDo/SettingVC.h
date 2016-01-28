@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SettingVC.h
 //  ToDo
 //
 //  Created by qingyun on 16/1/28.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface SettingVC : UIViewController
 
 @end
-
