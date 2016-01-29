@@ -7,7 +7,8 @@
 //
 
 #import "HomeVC.h"
-#import "WWSideslipViewController.h"
+#import "YRSideViewController.h"
+#import "AppDelegate.h"
 
 @interface HomeVC ()
 
@@ -27,14 +28,16 @@
 
 - (void)meunBtnAction
 {
-    WWSideslipViewController *VC = [WWSideslipViewController new];
-    [VC showLeftView];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    YRSideViewController *YRVC = [delegate YRVC];
+    [YRVC showLeftViewController:true];
 }
 
 - (void)addBtnAction
 {
-    WWSideslipViewController *VC = [WWSideslipViewController new];
-    [VC showRighView];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    YRSideViewController *YRVC = [delegate YRVC];
+    [YRVC showRightViewController:true];
 }
 
 #pragma mark - Table view data source

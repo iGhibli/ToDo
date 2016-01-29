@@ -10,7 +10,6 @@
 #import "SettingVC.h"
 #import "HomeVC.h"
 #import "AddVC.h"
-#import "WWSideslipViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,18 +21,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    SettingVC *settingVC = [[SettingVC alloc]init];
+    SettingVC *setVC = [[SettingVC alloc]init];
     HomeVC *homeVC = [[HomeVC alloc]init];
     AddVC *addVC = [[AddVC alloc]init];
     UINavigationController *mainVC = [[UINavigationController alloc]initWithRootViewController:homeVC];
     
-    WWSideslipViewController *handleVC = [[WWSideslipViewController alloc]initWithLeftView:settingVC andMainView:mainVC andRightView:addVC andBackgroundImage:[UIImage imageNamed:@"6"]];
-    //设置动画速度
-    [handleVC setSpeedf:0.5];
-    //设置点击中间视图是否恢复状态
-    handleVC.sideslipTapGes.enabled = YES;
-    
-    self.window.rootViewController = handleVC;
+    //设置YRVC
+    _YRVC = [[YRSideViewController alloc] init];
+    _YRVC.rootViewController = mainVC;
+    _YRVC.leftViewController = setVC;
+    _YRVC.rightViewController = addVC;
+    _YRVC.leftViewShowWidth = 200;
+    //默认开启可滑动展示
+    _YRVC.needSwipeShowMenu = true;
+    //默认关闭动画效果
+    [_YRVC setRootViewMoveBlock:^(UIView *rootView, CGRect orginFrame, CGFloat xoffset) {
+       //使用简单平移效果
+        rootView.frame = CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
+    }];
+    self.window.rootViewController = _YRVC;
     [self.window makeKeyAndVisible];
     
     return YES;

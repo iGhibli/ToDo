@@ -14,6 +14,7 @@
 @end
 
 @implementation SettingVC
+static NSString *setCellID = @"SettingCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,14 +33,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellID" forIndexPath:indexPath];
-//    if (cell == nil) {
-//        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SettingCellID"];
-//    }
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SettingCellID"];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:setCellID];
     cell.imageView.image = [UIImage imageNamed:@"add"];
     cell.textLabel.text = @"设置";
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 100;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIImageView *headerView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenW/3, 100)];
+    headerView.image = [UIImage imageNamed:@"meun"];
+    return headerView;
 }
 
 @end
