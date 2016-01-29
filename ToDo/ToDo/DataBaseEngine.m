@@ -177,6 +177,7 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     }
     //释放资源
     [db close];
+    
     return modelArray;
 }
 @end

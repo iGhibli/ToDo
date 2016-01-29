@@ -45,6 +45,11 @@ static NSString *homeCellID = @"homeCellID";
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     YRSideViewController *YRVC = [delegate YRVC];
     [YRVC showRightViewController:true];
+    [UIView animateWithDuration:0.3 animations:^{
+        UIImage *image = [UIImage imageNamed:@"cancel"];
+        image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        [self.navigationItem.rightBarButtonItem setImage:image];
+    }];
 }
 
 - (NSArray *)sourceArray {
