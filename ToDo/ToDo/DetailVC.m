@@ -7,27 +7,29 @@
 //
 
 #import "DetailVC.h"
+#import "DataBaseEngine.h"
+#import "DetailModel.h"
+#import "DetailCell.h"
 
 @interface DetailVC ()
-
+@property (nonatomic, strong) NSArray *sourceArray;
 @end
 
 @implementation DetailVC
-static NSString *DetailCellID = @"DetailCellID";
+static NSString *DetailCellID = @"detailCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //注册单元格
+    [self.tableView registerNib:[UINib nibWithNibName:@"DetailCell" bundle:nil] forCellReuseIdentifier:DetailCellID];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSArray *)sourceArray {
+    if (_sourceArray == nil) {
+        _sourceArray = [NSArray array];
+        _sourceArray = [DataBaseEngine getDetailModelsFromDBTableWithListID:self.listID];
+    }
+    return _sourceArray;
 }
 
 #pragma mark - Table view data source
@@ -39,16 +41,14 @@ static NSString *DetailCellID = @"DetailCellID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 3;
+    return self.sourceArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DetailCellID];
-    // Configure the cell...
-    
-    cell.textLabel.text = @"AAAA";
+    DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:DetailCellID forIndexPath:indexPath];
+    DetailModel *model = self.sourceArray[indexPath.row];
+    [cell bandingDetailCellWithModel:model];    
     return cell;
 }
 

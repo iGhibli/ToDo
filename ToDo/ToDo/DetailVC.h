@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailVC : UITableViewController
+@property (nonatomic, assign) int listID;
 
 @end

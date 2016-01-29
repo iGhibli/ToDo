@@ -10,9 +10,12 @@
 #import "YRSideViewController.h"
 #import "AppDelegate.h"
 #import "DetailVC.h"
+#import "DataBaseEngine.h"
+#import "ListModel.h"
+#import "ListCell.h"
 
 @interface HomeVC ()
-
+@property (nonatomic, strong) NSArray *sourceArray;
 @end
 
 @implementation HomeVC
@@ -20,6 +23,8 @@ static NSString *homeCellID = @"homeCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //注册单元格
+    [self.tableView registerNib:[UINib nibWithNibName:@"ListCell" bundle:nil] forCellReuseIdentifier:homeCellID];
     self.navigationItem.title = @"清单列表";
     UIBarButtonItem *meunItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"meun"] style:UIBarButtonItemStyleDone target:self action:@selector(meunBtnAction)];
     self.navigationItem.leftBarButtonItem = meunItem;
@@ -42,6 +47,14 @@ static NSString *homeCellID = @"homeCellID";
     [YRVC showRightViewController:true];
 }
 
+- (NSArray *)sourceArray {
+    if (_sourceArray == nil) {
+        _sourceArray = [NSArray array];
+        _sourceArray = [DataBaseEngine getListModelsFromDBTable];
+    }
+    return _sourceArray;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -49,22 +62,27 @@ static NSString *homeCellID = @"homeCellID";
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.sourceArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellID forIndexPath:indexPath];
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeCellID];
-    cell.textLabel.text = @"TEST";
-    // Configure the cell...
+    ListCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellID forIndexPath:indexPath];
+    [cell bandingListCellWithListModel:self.sourceArray[indexPath.row]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ListModel *model = self.sourceArray[indexPath.row];
     DetailVC *VC = [[DetailVC alloc]init];
+    [VC setValue:model.sort forKey:@"listID"];
     [self.navigationController pushViewController:VC animated:YES];
 }
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="detailCellID" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiD-Pa-aLa">
+                        <rect key="frame" x="53" y="10" width="257" height="23"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZT-A8-PON">
+                        <rect key="frame" x="20" y="10" width="23" height="23"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="8ZT-A8-PON" secondAttribute="height" multiplier="1:1" id="naR-7Q-lGk"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="check_off"/>
+                        <state key="selected" backgroundImage="check_on"/>
+                        <connections>
+                            <action selector="checkBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WCG-t2-NtX"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="GiD-Pa-aLa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="DIw-TK-nZZ"/>
+                    <constraint firstItem="GiD-Pa-aLa" firstAttribute="leading" secondItem="8ZT-A8-PON" secondAttribute="trailing" constant="10" id="F5F-2e-VWj"/>
+                    <constraint firstAttribute="bottom" secondItem="GiD-Pa-aLa" secondAttribute="bottom" constant="10" id="LiN-Lh-hfx"/>
+                    <constraint firstItem="8ZT-A8-PON" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="OD5-2V-WXU"/>
+                    <constraint firstAttribute="trailing" secondItem="GiD-Pa-aLa" secondAttribute="trailing" constant="10" id="WhA-rh-Xrf"/>
+                    <constraint firstItem="8ZT-A8-PON" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="id0-VM-RQX"/>
+                    <constraint firstAttribute="bottom" secondItem="8ZT-A8-PON" secondAttribute="bottom" constant="10" id="u16-KH-Rk9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="checkBtn" destination="8ZT-A8-PON" id="82a-U2-4gu"/>
+                <outlet property="detailLabel" destination="GiD-Pa-aLa" id="2YU-RS-z1T"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="check_off" width="33" height="33"/>
+        <image name="check_on" width="33" height="33"/>
+    </resources>
+</document>

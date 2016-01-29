@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ListModel;
 @interface ListCell : UITableViewCell
+@property (nonatomic, strong) ListModel *model;
+
+- (void)bandingListCellWithListModel:(ListModel *)model;
 
 @end

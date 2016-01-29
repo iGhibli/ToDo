@@ -7,6 +7,7 @@
 //
 
 #import "ListCell.h"
+#import "ListModel.h"
 
 @interface ListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -19,6 +20,16 @@
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (void)bandingListCellWithListModel:(ListModel *)model
+{
+    self.model = model;
+    self.icon.layer.cornerRadius = 25;
+    self.icon.clipsToBounds = YES;
+    self.icon.image = [UIImage imageWithData:(NSData *)model.image];
+    self.mainTitle.text = model.name;
+    self.progressLabel.text = @"100%";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

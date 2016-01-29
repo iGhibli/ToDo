@@ -40,6 +40,7 @@
         _showBoundsShadow = true;
 
         _panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pan:)];
+        
         [_panGestureRecognizer setDelegate:self];
 
         _panMovingRightOrLeft = false;
@@ -306,7 +307,8 @@
         if (velocity.x>0) {
             _panMovingRightOrLeft = true;
         }else if(velocity.x<0){
-            _panMovingRightOrLeft = false;
+#pragma mark - 关闭左滑效果
+//            _panMovingRightOrLeft = false;
         }
     }
 }
