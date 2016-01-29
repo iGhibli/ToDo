@@ -15,20 +15,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cT9-nw-U1J">
-                        <rect key="frame" x="8" y="12" width="78" height="65"/>
+                        <rect key="frame" x="8" y="12" width="78" height="72"/>
                         <animations/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZx-R6-KB9">
-                        <rect key="frame" x="94" y="12" width="226" height="21"/>
+                        <rect key="frame" x="94" y="12" width="226" height="28"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWZ-as-GWg">
+                        <rect key="frame" x="278" y="63" width="42" height="21"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <animations/>
             </tableViewCellContentView>
             <animations/>
+            <connections>
+                <outlet property="icon" destination="cT9-nw-U1J" id="0Ug-nd-ZDl"/>
+                <outlet property="mainTitle" destination="aZx-R6-KB9" id="FwE-nu-TeV"/>
+                <outlet property="progressLabel" destination="yWZ-as-GWg" id="YEY-Wg-Oav"/>
+            </connections>
             <point key="canvasLocation" x="332" y="457.5"/>
         </tableViewCell>
     </objects>

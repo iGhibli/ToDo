@@ -18,7 +18,7 @@ static NSString *setCellID = @"SettingCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
+//    self.view.backgroundColor = [UIColor blueColor];
     UITableView *table = [[UITableView alloc]initWithFrame:CGRectMake(0, 20, kScreenW, kScreenH) style:UITableViewStylePlain];
     table.delegate = self;
     table.dataSource = self;

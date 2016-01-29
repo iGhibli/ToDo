@@ -8,6 +8,13 @@
 
 #import "ListCell.h"
 
+@interface ListCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *mainTitle;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+
+@end
+
 @implementation ListCell
 
 - (void)awakeFromNib {

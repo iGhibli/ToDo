@@ -1,72 +1,57 @@
 //
-//  HomeVC.m
+//  DetailVC.m
 //  ToDo
 //
-//  Created by qingyun on 16/1/28.
+//  Created by qingyun on 16/1/29.
 //  Copyright © 2016年 qingyun. All rights reserved.
 //
 
-#import "HomeVC.h"
-#import "YRSideViewController.h"
-#import "AppDelegate.h"
 #import "DetailVC.h"
 
-@interface HomeVC ()
+@interface DetailVC ()
 
 @end
 
-@implementation HomeVC
-static NSString *homeCellID = @"homeCellID";
+@implementation DetailVC
+static NSString *DetailCellID = @"DetailCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"清单列表";
-    UIBarButtonItem *meunItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"meun"] style:UIBarButtonItemStyleDone target:self action:@selector(meunBtnAction)];
-    self.navigationItem.leftBarButtonItem = meunItem;
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:self action:@selector(addBtnAction)];
-    self.navigationItem.rightBarButtonItem = addItem;
-
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)meunBtnAction
-{
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    YRSideViewController *YRVC = [delegate YRVC];
-    [YRVC showLeftViewController:true];
-}
-
-- (void)addBtnAction
-{
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    YRSideViewController *YRVC = [delegate YRVC];
-    [YRVC showRightViewController:true];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete implementation, return the number of sections
     return 3;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete implementation, return the number of rows
+    return 3;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellID forIndexPath:indexPath];
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeCellID];
-    cell.textLabel.text = @"TEST";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DetailCellID];
     // Configure the cell...
     
+    cell.textLabel.text = @"AAAA";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    DetailVC *VC = [[DetailVC alloc]init];
-    [self.navigationController pushViewController:VC animated:YES];
-}
 
 /*
 // Override to support conditional editing of the table view.
