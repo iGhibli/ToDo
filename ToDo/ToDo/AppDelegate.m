@@ -7,9 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SettingVC.h"
-#import "HomeVC.h"
-#import "AddVC.h"
 
 @interface AppDelegate ()
 
@@ -17,20 +14,19 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    SettingVC *setVC = [[SettingVC alloc]init];
-    HomeVC *homeVC = [[HomeVC alloc]init];
-    AddVC *addVC = [[AddVC alloc]init];
-    UINavigationController *mainVC = [[UINavigationController alloc]initWithRootViewController:homeVC];
+//    SettingVC *setVC = [[SettingVC alloc]init];
     
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *mainVC = [board instantiateViewControllerWithIdentifier:@"mainNavID"];
+    
+#if 0
     //设置YRVC
     _YRVC = [[YRSideViewController alloc] init];
     _YRVC.rootViewController = mainVC;
     _YRVC.leftViewController = setVC;
-    _YRVC.rightViewController = addVC;
     _YRVC.leftViewShowWidth = 200;
     //默认开启可滑动展示
     [_YRVC setNeedSwipeShowMenu:NO];
@@ -39,7 +35,8 @@
        //使用简单平移效果
         rootView.frame = CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
     }];
-    self.window.rootViewController = _YRVC;
+#endif
+    self.window.rootViewController = mainVC;
     [self.window makeKeyAndVisible];
     
     return YES;

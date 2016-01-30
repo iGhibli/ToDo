@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC2A73151C5CCB510060AD33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2A73141C5CCB510060AD33 /* Default-568h@2x.png */; };
+		CC2A73181C5CD1350060AD33 /* AdressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2A73171C5CD1350060AD33 /* AdressVC.m */; };
 		CC40316F1C5B150C00B1C2D6 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40316E1C5B150C00B1C2D6 /* YRSideViewController.m */; };
 		CC4031751C5B2A6E00B1C2D6 /* DetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4031741C5B2A6E00B1C2D6 /* DetailVC.m */; };
 		CC4031781C5B2E9400B1C2D6 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4031771C5B2E9400B1C2D6 /* ListModel.m */; };
@@ -36,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC2A73141C5CCB510060AD33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CC2A73161C5CD1350060AD33 /* AdressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdressVC.h; sourceTree = "<group>"; };
+		CC2A73171C5CD1350060AD33 /* AdressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdressVC.m; sourceTree = "<group>"; };
 		CC40316D1C5B150C00B1C2D6 /* YRSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRSideViewController.h; sourceTree = "<group>"; };
 		CC40316E1C5B150C00B1C2D6 /* YRSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRSideViewController.m; sourceTree = "<group>"; };
 		CC4031731C5B2A6E00B1C2D6 /* DetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVC.h; sourceTree = "<group>"; };
@@ -167,6 +172,7 @@
 		CC7855FD1C5A00420007EA0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC2A73141C5CCB510060AD33 /* Default-568h@2x.png */,
 				CC7856261C5A3C5F0007EA0E /* 6.png */,
 				CC7856091C5A00420007EA0E /* Assets.xcassets */,
 				CC78560B1C5A00420007EA0E /* LaunchScreen.storyboard */,
@@ -187,6 +193,8 @@
 				CC7856241C5A36480007EA0E /* AddVC.m */,
 				CC4031731C5B2A6E00B1C2D6 /* DetailVC.h */,
 				CC4031741C5B2A6E00B1C2D6 /* DetailVC.m */,
+				CC2A73161C5CD1350060AD33 /* AdressVC.h */,
+				CC2A73171C5CD1350060AD33 /* AdressVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -300,6 +308,7 @@
 				CC78560A1C5A00420007EA0E /* Assets.xcassets in Resources */,
 				CC7856271C5A3C5F0007EA0E /* 6.png in Resources */,
 				CC40319C1C5B8B9A00B1C2D6 /* DetailCell.xib in Resources */,
+				CC2A73151C5CCB510060AD33 /* Default-568h@2x.png in Resources */,
 				CC7856081C5A00420007EA0E /* Main.storyboard in Resources */,
 				CC40317B1C5B430300B1C2D6 /* ToDoData.sqlite3 in Resources */,
 			);
@@ -327,6 +336,7 @@
 				CC7856251C5A36480007EA0E /* AddVC.m in Sources */,
 				CC4031781C5B2E9400B1C2D6 /* ListModel.m in Sources */,
 				CC40319B1C5B8B9A00B1C2D6 /* DetailCell.m in Sources */,
+				CC2A73181C5CD1350060AD33 /* AdressVC.m in Sources */,
 				CC4031901C5B438900B1C2D6 /* FMDatabasePool.m in Sources */,
 				CC78562A1C5A40340007EA0E /* HomeVC.m in Sources */,
 				CC7855FF1C5A00420007EA0E /* main.m in Sources */,
@@ -372,7 +382,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -394,6 +405,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -415,7 +427,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -430,6 +443,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -439,10 +453,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = ToDo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingyun.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
 			};
 			name = Debug;
 		};
@@ -450,10 +467,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = ToDo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingyun.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "924fa85d-e84f-4081-b219-cd9ce15d6b5e";
 			};
 			name = Release;
 		};

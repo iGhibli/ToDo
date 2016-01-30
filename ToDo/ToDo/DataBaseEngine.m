@@ -180,4 +180,25 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     
     return modelArray;
 }
+
++ (NSMutableArray *)getCityAndCountryFromDBTableWithName:(NSString *)name
+{
+    //创建数据库
+    FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    //打开数据库
+    [db open];
+    //查询语句
+//    NSString *sqlString = [NSString stringWithFormat:];
+    //查询并输出结果
+    FMResultSet *result = [db executeQuery:@"select name_cn from ? where Rtrim(name_cn) LIKE '%?%'",kCity ,name];
+    NSMutableArray *strArray = [NSMutableArray array];
+    while ([result next]) {
+        NSString *str = [result stringForColumn:0];
+        [strArray addObject:str];
+    }
+    //释放资源
+    [db close];
+    return strArray;
+}
+
 @end

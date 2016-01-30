@@ -13,6 +13,7 @@
 #import "DataBaseEngine.h"
 #import "ListModel.h"
 #import "ListCell.h"
+#import "AddVC.h"
 
 @interface HomeVC ()
 @property (nonatomic, strong) NSArray *sourceArray;
@@ -23,28 +24,8 @@ static NSString *homeCellID = @"homeCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     //注册单元格
     [self.tableView registerNib:[UINib nibWithNibName:@"ListCell" bundle:nil] forCellReuseIdentifier:homeCellID];
-    self.navigationItem.title = @"清单列表";
-    UIBarButtonItem *meunItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"meun"] style:UIBarButtonItemStyleDone target:self action:@selector(meunBtnAction)];
-    self.navigationItem.leftBarButtonItem = meunItem;
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:self action:@selector(addBtnAction)];
-    self.navigationItem.rightBarButtonItem = addItem;
-}
-
-- (void)meunBtnAction
-{
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    YRSideViewController *YRVC = [delegate YRVC];
-    [YRVC showLeftViewController:true];
-}
-
-- (void)addBtnAction
-{
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    YRSideViewController *YRVC = [delegate YRVC];
-    [YRVC showRightViewController:true];
 }
 
 - (NSArray *)sourceArray {

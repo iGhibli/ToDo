@@ -17,4 +17,6 @@
 
 + (NSMutableArray *)getDetailModelsFromDBTableWithListID:(int)listID;
 
++ (NSMutableArray *)getCityAndCountryFromDBTableWithName:(NSString *)name;
+
 @end
