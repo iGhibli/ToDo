@@ -23,6 +23,7 @@ static NSString *homeCellID = @"homeCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //注册单元格
     [self.tableView registerNib:[UINib nibWithNibName:@"ListCell" bundle:nil] forCellReuseIdentifier:homeCellID];
     self.navigationItem.title = @"清单列表";
@@ -30,6 +31,25 @@ static NSString *homeCellID = @"homeCellID";
     self.navigationItem.leftBarButtonItem = meunItem;
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:self action:@selector(addBtnAction)];
     self.navigationItem.rightBarButtonItem = addItem;
+
+}
+
+- (void)changeItemImage
+{
+//    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:self action:@selector(tet)];
+//    self.navigationItem.rightBarButtonItem = addItem;
+    
+//    UIImage *image = [UIImage imageNamed:@"add"];
+//    image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+//    [self.navigationItem.rightBarButtonItem setImage:image];
+//    [UIView animateWithDuration:0.3 animations:^{
+//        UIImage *image = [UIImage imageNamed:@"add"];
+//        image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+//        [self.navigationItem.rightBarButtonItem setImage:image];
+//    }];
+}
+
+- (void)tet{
 
 }
 

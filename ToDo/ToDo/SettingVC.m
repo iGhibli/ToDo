@@ -23,6 +23,12 @@ static NSString *setCellID = @"SettingCellID";
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
+    UIView *view = [[UIView alloc]init];
+    UIImageView *headerView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 70, 70)];
+    UIImage *image = [UIImage imageNamed:@"icon"];
+    headerView.image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+    [view addSubview:headerView];
+    table.tableHeaderView = view;
 }
 
 #pragma mark - UITableView
@@ -38,17 +44,4 @@ static NSString *setCellID = @"SettingCellID";
     cell.textLabel.text = @"设置";
     return cell;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 100;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIImageView *headerView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenW/3, 100)];
-    headerView.image = [UIImage imageNamed:@"meun"];
-    return headerView;
-}
-
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "YRSideViewController.h"
+#import "HomeVC.h"
+
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -225,9 +227,11 @@
     if (animated) {
         animatedTime = ABS(_currentView.frame.origin.x / (_currentView.frame.origin.x>0?_leftViewShowWidth:_rightViewShowWidth)) * _animationDuration;
     }
+    
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView animateWithDuration:animatedTime animations:^{
         [self layoutCurrentViewWithOffset:0];
+#warning 代理
     } completion:^(BOOL finished) {
         [_coverButton removeFromSuperview];
         [_leftViewController.view removeFromSuperview];
@@ -307,8 +311,7 @@
         if (velocity.x>0) {
             _panMovingRightOrLeft = true;
         }else if(velocity.x<0){
-#pragma mark - 关闭左滑效果
-//            _panMovingRightOrLeft = false;
+            _panMovingRightOrLeft = false;
         }
     }
 }

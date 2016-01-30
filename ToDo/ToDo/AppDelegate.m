@@ -33,7 +33,7 @@
     _YRVC.rightViewController = addVC;
     _YRVC.leftViewShowWidth = 200;
     //默认开启可滑动展示
-    _YRVC.needSwipeShowMenu = true;
+    [_YRVC setNeedSwipeShowMenu:NO];
     //默认关闭动画效果
     [_YRVC setRootViewMoveBlock:^(UIView *rootView, CGRect orginFrame, CGFloat xoffset) {
        //使用简单平移效果
