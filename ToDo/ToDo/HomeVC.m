@@ -17,6 +17,7 @@
 
 @interface HomeVC ()
 @property (nonatomic, strong) NSArray *sourceArray;
+@property (nonatomic, strong) NSDictionary *addDict;
 @end
 
 @implementation HomeVC
@@ -67,6 +68,18 @@ static NSString *homeCellID = @"homeCellID";
     [self.navigationController pushViewController:VC animated:YES];
 }
 
+- (void)editListInfoWithInfoDict:(NSMutableDictionary *)dict
+{
+    AddVC *VC = [[AddVC alloc]init];
+    VC.infoDict = dict;
+    
+    //对changeSignVC视图控制器的changeLabelValue属性进行赋值
+    VC.pass = ^(NSMutableDictionary *){
+        
+    };
+    
+    [self.navigationController pushViewController:VC animated:YES];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

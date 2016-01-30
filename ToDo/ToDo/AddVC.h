@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^passInfoDict)(NSDictionary *infoDict);
+
 @interface AddVC : UIViewController
+
+@property (nonatomic, strong) NSMutableDictionary *infoDict;
+@property (nonatomic, copy) passInfoDict pass;
 
 @end
 

@@ -10,9 +10,11 @@
 #import "Common.h"
 
 @interface AddVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *imageBtn;
 @property (weak, nonatomic) IBOutlet UITextField *listName;
 @property (weak, nonatomic) IBOutlet UITextField *listAdress;
+@property (nonatomic, strong) UIImage *selectImage;
 
 @end
 
@@ -21,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor orangeColor];
+    self.infoDict = [NSMutableDictionary dictionary];
 }
 
 - (IBAction)addImageAction:(UIButton *)sender {
@@ -60,7 +63,15 @@
     }
     //都已填写完成
     if (self.listName.text.length != 0 && self.listAdress.text.length != 0) {
-        
+        NSData *data = UIImagePNGRepresentation(self.selectImage);
+        [self.infoDict setValue:data forKey:@"imageData"];
+        [self.infoDict setValue:_listName.text forKey:@"listName"];
+        [self.infoDict setValue:_listAdress.text forKey:@"listAdress"];
+        //使用block块属性之前，需要判断是否为空
+        if (self.infoDict) {
+            //调用block块，来触发QYUserViewController内部更改descLabel文本
+            _passInfoDict(self.infoDict);
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -118,7 +129,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
 {
     [picker dismissViewControllerAnimated:YES completion:^{}];
-    
+    self.selectImage = image;
     [self.imageBtn setBackgroundImage:image forState:UIControlStateNormal];
 }
 
