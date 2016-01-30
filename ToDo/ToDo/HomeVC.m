@@ -31,26 +31,6 @@ static NSString *homeCellID = @"homeCellID";
     self.navigationItem.leftBarButtonItem = meunItem;
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:self action:@selector(addBtnAction)];
     self.navigationItem.rightBarButtonItem = addItem;
-
-}
-
-- (void)changeItemImage
-{
-//    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStyleDone target:self action:@selector(tet)];
-//    self.navigationItem.rightBarButtonItem = addItem;
-    
-//    UIImage *image = [UIImage imageNamed:@"add"];
-//    image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-//    [self.navigationItem.rightBarButtonItem setImage:image];
-//    [UIView animateWithDuration:0.3 animations:^{
-//        UIImage *image = [UIImage imageNamed:@"add"];
-//        image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-//        [self.navigationItem.rightBarButtonItem setImage:image];
-//    }];
-}
-
-- (void)tet{
-
 }
 
 - (void)meunBtnAction
@@ -65,11 +45,6 @@ static NSString *homeCellID = @"homeCellID";
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     YRSideViewController *YRVC = [delegate YRVC];
     [YRVC showRightViewController:true];
-    [UIView animateWithDuration:0.3 animations:^{
-        UIImage *image = [UIImage imageNamed:@"cancel"];
-        image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-        [self.navigationItem.rightBarButtonItem setImage:image];
-    }];
 }
 
 - (NSArray *)sourceArray {
