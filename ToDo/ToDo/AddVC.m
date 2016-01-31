@@ -68,12 +68,18 @@
         [self.infoDict setValue:_listName.text forKey:@"listName"];
         [self.infoDict setValue:_listAdress.text forKey:@"listAdress"];
         //使用block块属性之前，需要判断是否为空
-        if (self.infoDict) {
-            //调用block块，来触发QYUserViewController内部更改descLabel文本
-            _passInfoDict(self.infoDict);
+        if (self.pass) {
+            //调用block块，来触发内部更改descLabel文本
+            self.pass(self.infoDict);
         }
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)getPassInfoDict:(passInfoDict)block
+{
+    self.pass = block;
 }
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {

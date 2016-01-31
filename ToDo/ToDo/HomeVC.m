@@ -74,10 +74,10 @@ static NSString *homeCellID = @"homeCellID";
     VC.infoDict = dict;
     
     //对changeSignVC视图控制器的changeLabelValue属性进行赋值
-    VC.pass = ^(NSMutableDictionary *){
+    [VC getPassInfoDict:^(NSDictionary *infoDict) {
+        self.addDict = infoDict;
+    }];
         
-    };
-    
     [self.navigationController pushViewController:VC animated:YES];
 }
 /*

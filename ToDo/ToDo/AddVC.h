@@ -15,6 +15,8 @@ typedef void (^passInfoDict)(NSDictionary *infoDict);
 @property (nonatomic, strong) NSMutableDictionary *infoDict;
 @property (nonatomic, copy) passInfoDict pass;
 
+- (void)getPassInfoDict:(passInfoDict)block;
+
 @end
 
 
