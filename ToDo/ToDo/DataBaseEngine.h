@@ -11,12 +11,14 @@
 @class ListModel;
 @interface DataBaseEngine : NSObject
 
-+ (void)saveTravelListToTraveListTable:(ListModel *)model;
++ (void)saveTravelListToTravelListTable:(NSDictionary *)dict;
 
 + (NSMutableArray *)getListModelsFromDBTable;
 
 + (NSMutableArray *)getDetailModelsFromDBTableWithListID:(int)listID;
 
 + (NSMutableArray *)getCityAndCountryFromDBTableWithName:(NSString *)name;
+
++ (void)deleteTravelListFromTravelListTableWithSort:(NSInteger)sort;
 
 @end

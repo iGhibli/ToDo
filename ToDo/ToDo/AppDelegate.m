@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Common.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +22,11 @@
     
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *mainVC = [board instantiateViewControllerWithIdentifier:@"mainNavID"];
-    
+//    [mainVC.navigationBar setBackgroundColor:[UIColor blackColor]];
+//    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 44)];
+//    bgImageView.image = [UIImage imageNamed:@"navigationbar_bg"];
+//    [mainVC.navigationBar addSubview:bgImageView];
+//    [mainVC.navigationBar sendSubviewToBack:bgImageView];
 #if 0
     //设置YRVC
     _YRVC = [[YRSideViewController alloc] init];

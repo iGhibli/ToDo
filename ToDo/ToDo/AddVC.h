@@ -7,15 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef void (^passInfoDict)(NSDictionary *infoDict);
+#import "PassInfoDictDelegate.h"
 
 @interface AddVC : UIViewController
 
-@property (nonatomic, strong) NSMutableDictionary *infoDict;
-@property (nonatomic, copy) passInfoDict pass;
+@property (nonatomic, assign) int sort;
+@property (nonatomic, assign) id<PassInfoDictDelegate> delegate;
 
-- (void)getPassInfoDict:(passInfoDict)block;
 
 @end
 

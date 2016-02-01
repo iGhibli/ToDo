@@ -10,10 +10,13 @@
 #import "DataBaseEngine.h"
 #import "DetailModel.h"
 #import "DetailCell.h"
+#import "Common.h"
+#import "AddVC.h"
 
-@interface DetailVC ()
+@interface DetailVC ()<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *sourceArray;
-@property (nonatomic, strong) NSArray *twoDimensionArray;
+@property (nonatomic, strong) NSMutableArray *twoDimensionArray;
 @end
 
 @implementation DetailVC
@@ -21,25 +24,31 @@ static NSString *DetailCellID = @"detailCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //注册单元格
-    [self.tableView registerNib:[UINib nibWithNibName:@"DetailCell" bundle:nil] forCellReuseIdentifier:DetailCellID];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)changeShowAction:(UIButton *)sender
+{
+    sender.selected = sender.selected ? NO : YES;
 }
 
 - (NSArray *)sourceArray {
     if (_sourceArray == nil) {
         _sourceArray = [NSArray array];
-        _sourceArray = [DataBaseEngine getDetailModelsFromDBTableWithListID:self.listID];
+        _sourceArray = [DataBaseEngine getDetailModelsFromDBTableWithListID:self.sort];
     }
     return _sourceArray;
 }
 
 - (NSArray *)twoDimensionArray {
     if (_twoDimensionArray == nil) {
-//        _twoDimensionArray = [NSArray array];
+        _twoDimensionArray = [NSMutableArray array];
         //
         NSMutableArray *xingQianShiXiang = [NSMutableArray array];
         //
-        NSMutableArray *gouWuQingDan = [NSMutableArray array];
+//        NSMutableArray *gouWuQingDan = [NSMutableArray array];
         //
         NSMutableArray *wenJian = [NSMutableArray array];
         //
@@ -88,12 +97,44 @@ static NSString *DetailCellID = @"detailCellID";
             }
         }];
         //将分类后的数组存入二维数组
-        _twoDimensionArray = [[NSArray alloc]initWithObjects:xingQianShiXiang, wenJian, ziJin, fuZhuang, geHu, yiLiao, dianZi, qianShuiSheBei, zaXiang, lvTuBeiWang, ziDingYi, nil];
+        NSArray *tempArray = [[NSArray alloc]initWithObjects:xingQianShiXiang, wenJian, ziJin, fuZhuang, geHu, yiLiao, dianZi, qianShuiSheBei, zaXiang, lvTuBeiWang, ziDingYi, nil];
+        [tempArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray *array = obj;
+            if (array.count != 0) {
+                [_twoDimensionArray addObject:array];
+            }
+        }];
     }
     return _twoDimensionArray;
 }
 
+#pragma mark - ButtonAction
+- (IBAction)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)sortShowAction:(UIButton *)sender {
+    sender.selected = sender.selected ? NO:YES;
+}
+
+- (IBAction)addCustomAction:(UIButton *)sender {
+    
+}
+
+- (IBAction)addFromAction:(UIButton *)sender {
+    
+}
+
+- (IBAction)changeListInfo:(UIButton *)sender {
+    AddVC *VC = [self.storyboard instantiateViewControllerWithIdentifier:@"addVCID"];
+//    self
+}
+
 #pragma mark - Table view data source
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.twoDimensionArray.count;
@@ -103,7 +144,6 @@ static NSString *DetailCellID = @"detailCellID";
     NSArray *array = self.twoDimensionArray[section];
     return array.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:DetailCellID forIndexPath:indexPath];
@@ -159,19 +199,6 @@ static NSString *DetailCellID = @"detailCellID";
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

@@ -17,7 +17,7 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
 @implementation DataBaseEngine
 
 //类的初始化方法、第一次调用这个类的时候，使用之前就会被调用（只调用一次，不能调用super）
-+(void)initialize{
++ (void)initialize{
     if (self == [DataBaseEngine self]) {
         //将数据库拷贝到documents下
         [DataBaseEngine copyDatabaseFileToDocuments:kDBFileName];
@@ -26,7 +26,7 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     }
 }
 //拷贝数据库文件到Documents下
-+(void)copyDatabaseFileToDocuments:(NSString *)dbName{
++ (void)copyDatabaseFileToDocuments:(NSString *)dbName{
     NSString *source = [[NSBundle mainBundle] pathForResource:dbName ofType:nil];
     NSString *toPath = [NSString filePathInDocumentsWithFileName:dbName];
     NSError *error;
@@ -40,7 +40,7 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     }
 }
 //查询数组的所有字段
-+(NSArray *)tableColumn:(NSString *)tableName{
++ (NSArray *)tableColumn:(NSString *)tableName{
     //创建DB
     FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
     [db open];
@@ -55,45 +55,18 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     [db close];
     return columns;
 }
-#if 0
 
-+(void)saveTravelListToTraveListTable:(ListModel *)model {
++ (void)saveTravelListToTravelListTable:(NSDictionary *)dict {
     //插入操作，首先创建db对象，写sql语句，执行操作
     //使用队列queue，创建DB
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
     //使用queue提供一个DB
     [queue inDatabase:^(FMDatabase *db) {
-        //进行数据库的增删改查
-        [statuses enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSDictionary *status = obj;
-            //首先，查找出所有的有效字段
-            NSArray *allKey = status.allKeys;
-            NSArray *contentKey = [DataBaseEngine contenKeyWith:statusTableColumn key2:allKey];
-            //删除字典中多余的键值
-            //将微博字典转化为可变字典
-            NSMutableDictionary *resultDic = [NSMutableDictionary dictionaryWithDictionary:status];
-            [allKey enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                //如果是多余的key，则删除
-                if (![contentKey containsObject:obj]) {
-                    [resultDic removeObjectForKey:obj];
-                }else{
-                    //字典中的值转化为二进制类型（NSData）
-                    id value = [resultDic objectForKey:obj];
-                    if ([value isKindOfClass:[NSDictionary class]] || [value isKindOfClass:[NSArray class]]) {
-                        //如果类型为数组或者字典，转化为二进制素具替换掉
-                        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:value];
-                        [resultDic setObject:data forKey:obj];
-                    }
-                }
-            }];
-            //根据table和字典共有的key，创建插入语句
-            NSString *sqlString = [DataBaseEngine sqlStringWithKeys:contentKey];
-            BOOL result = [db executeUpdate:sqlString withParameterDictionary:resultDic];
-            NSLog(@"%d",result);
-        }];
+        BOOL result = [db executeUpdate:@"insert into travellist(name ,image ,sort ,relatedpoi) values(:name ,:image ,:sort ,:relatedpoi) " withParameterDictionary:dict];
+        NSLog(@"%d",result);
     }];
 }
-#endif
+
 //查询出两个数组中共有的方法（处理表的所有字段与有效字段的交集）
 +(NSArray *)contenKeyWith:(NSArray *)key1 key2:(NSArray *)key2{
     NSMutableArray *result = [NSMutableArray array];
@@ -199,6 +172,19 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     //释放资源
     [db close];
     return strArray;
+}
+
++ (void)deleteTravelListFromTravelListTableWithSort:(NSInteger)sort
+{
+    //删除操作，首先创建db，写sql语句，执行操作
+    //使用队列时不需要自己创建db,队列会创建
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    [queue inDatabase:^(FMDatabase *db) {
+        //创建SQL语句
+        NSString *SQLString = [NSString stringWithFormat:@"delete from travellist where sort = %ld;",(long)sort];
+        BOOL result = [db executeUpdate:SQLString];
+        NSLog(@"%d>>>>%@",result, SQLString);
+    }];
 }
 
 @end

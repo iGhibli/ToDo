@@ -8,6 +8,7 @@
 
 #import "AddVC.h"
 #import "Common.h"
+#import "DataBaseEngine.h"
 
 @interface AddVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 
@@ -23,7 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor orangeColor];
-    self.infoDict = [NSMutableDictionary dictionary];
+}
+
+- (IBAction)backAction:(UIBarButtonItem *)sender {
+    
 }
 
 - (IBAction)addImageAction:(UIButton *)sender {
@@ -63,23 +67,19 @@
     }
     //都已填写完成
     if (self.listName.text.length != 0 && self.listAdress.text.length != 0) {
-        NSData *data = UIImagePNGRepresentation(self.selectImage);
-        [self.infoDict setValue:data forKey:@"imageData"];
-        [self.infoDict setValue:_listName.text forKey:@"listName"];
-        [self.infoDict setValue:_listAdress.text forKey:@"listAdress"];
-        //使用block块属性之前，需要判断是否为空
-        if (self.pass) {
-            //调用block块，来触发内部更改descLabel文本
-            self.pass(self.infoDict);
+        NSMutableDictionary *infoDict = [NSMutableDictionary dictionary];
+        if (self.selectImage == nil) {
+            self.selectImage = [UIImage imageNamed:@"listPlaceholderImage"];
         }
-        
+        NSData *data = UIImagePNGRepresentation(self.selectImage);
+        [infoDict setValue:data forKey:@"image"];
+        [infoDict setValue:_listName.text forKey:@"name"];
+        [infoDict setValue:_listAdress.text forKey:@"relatedpoi"];
+        [infoDict setValue:@(self.sort + 1) forKey:@"sort"];
+        [DataBaseEngine saveTravelListToTravelListTable:infoDict];
+//        [self.delegate passInfoDict:self.infoDict];
         [self.navigationController popViewControllerAnimated:YES];
     }
-}
-
-- (void)getPassInfoDict:(passInfoDict)block
-{
-    self.pass = block;
 }
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
