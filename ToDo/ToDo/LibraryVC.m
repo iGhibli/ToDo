@@ -8,6 +8,7 @@
 
 #import "LibraryVC.h"
 #import "DataBaseEngine.h"
+#import "LibraryCell.h"
 
 @interface LibraryVC ()<UITableViewDataSource ,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *sortTableView;
@@ -39,9 +40,9 @@ static NSString *twoCellID = @"TwoCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.sortTableView) {
-        return 50;
+        return 40;
     }else {
-        return 50;
+        return 40;
     }
 }
 
@@ -55,11 +56,7 @@ static NSString *twoCellID = @"TwoCellID";
         cell.textLabel.text = self.sortSource[indexPath.row];
         return cell;
     }else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:oneCellID];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:oneCellID];
-        }
-        cell.textLabel.text = @"AAAA";
+        LibraryCell *cell = [tableView dequeueReusableCellWithIdentifier:twoCellID];
         return cell;
     }
 }

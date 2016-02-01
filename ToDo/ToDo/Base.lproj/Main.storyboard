@@ -325,27 +325,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-CM-0Zu">
-                                <rect key="frame" x="0.0" y="64" width="200" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="210" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QV4-ZY-Tkt">
-                                <rect key="frame" x="200" y="64" width="400" height="536"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QV4-ZY-Tkt">
+                                <rect key="frame" x="210" y="64" width="390" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TwoCellID" rowHeight="74" id="Upu-iz-ZUd" customClass="LibraryCell">
+                                        <rect key="frame" x="0.0" y="28" width="390" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Upu-iz-ZUd" id="XuK-TE-veE">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="73"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnq-lk-TXI">
+                                                    <rect key="frame" x="327" y="10" width="53" height="53"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="wnq-lk-TXI" secondAttribute="height" multiplier="1:1" id="YHr-iV-opw"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="library_add"/>
+                                                    <state key="highlighted" backgroundImage="library_add_h"/>
+                                                    <connections>
+                                                        <action selector="addBtnAction:" destination="Upu-iz-ZUd" eventType="touchUpInside" id="254-YX-okA"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FF7-ZZ-XbG">
+                                                    <rect key="frame" x="10" y="5" width="307" height="63"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="FF7-ZZ-XbG" firstAttribute="leading" secondItem="XuK-TE-veE" secondAttribute="leading" constant="10" id="27U-H6-k6I"/>
+                                                <constraint firstAttribute="trailing" secondItem="wnq-lk-TXI" secondAttribute="trailing" constant="10" id="Dxr-fq-38t"/>
+                                                <constraint firstAttribute="bottom" secondItem="FF7-ZZ-XbG" secondAttribute="bottom" constant="5" id="E74-fh-sHX"/>
+                                                <constraint firstItem="wnq-lk-TXI" firstAttribute="top" secondItem="XuK-TE-veE" secondAttribute="top" constant="10" id="Exc-IZ-FED"/>
+                                                <constraint firstItem="wnq-lk-TXI" firstAttribute="leading" secondItem="FF7-ZZ-XbG" secondAttribute="trailing" constant="10" id="IF4-3Q-IyC"/>
+                                                <constraint firstItem="FF7-ZZ-XbG" firstAttribute="top" secondItem="XuK-TE-veE" secondAttribute="top" constant="5" id="qRh-W4-Jd8"/>
+                                                <constraint firstAttribute="bottom" secondItem="wnq-lk-TXI" secondAttribute="bottom" constant="10" id="so5-nP-lWM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="addBtn" destination="wnq-lk-TXI" id="JHN-0N-qeQ"/>
+                                            <outlet property="name" destination="FF7-ZZ-XbG" id="udj-II-3FJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bfE-CM-0Zu" firstAttribute="width" secondItem="QV4-ZY-Tkt" secondAttribute="width" multiplier="1:2" id="AJo-IV-LMJ"/>
-                            <constraint firstItem="QV4-ZY-Tkt" firstAttribute="top" secondItem="O2B-fn-XE8" secondAttribute="bottom" id="EaM-4K-8SV"/>
-                            <constraint firstAttribute="trailing" secondItem="QV4-ZY-Tkt" secondAttribute="trailing" id="I9c-np-91M"/>
-                            <constraint firstItem="PF9-Ao-cm4" firstAttribute="top" secondItem="QV4-ZY-Tkt" secondAttribute="bottom" id="KdV-df-2Oo"/>
-                            <constraint firstItem="bfE-CM-0Zu" firstAttribute="leading" secondItem="ihn-08-wyT" secondAttribute="leading" id="L1p-gs-JCm"/>
-                            <constraint firstItem="bfE-CM-0Zu" firstAttribute="top" secondItem="O2B-fn-XE8" secondAttribute="bottom" id="ONG-Ps-Ehr"/>
-                            <constraint firstItem="QV4-ZY-Tkt" firstAttribute="leading" secondItem="bfE-CM-0Zu" secondAttribute="trailing" id="ll6-SE-Axn"/>
-                            <constraint firstItem="PF9-Ao-cm4" firstAttribute="top" secondItem="bfE-CM-0Zu" secondAttribute="bottom" id="oab-hW-qEU"/>
+                            <constraint firstItem="QV4-ZY-Tkt" firstAttribute="top" secondItem="ihn-08-wyT" secondAttribute="top" constant="64" id="4IG-5m-JrZ"/>
+                            <constraint firstItem="bfE-CM-0Zu" firstAttribute="width" secondItem="ihn-08-wyT" secondAttribute="width" multiplier="0.35" id="5U5-QC-JJY"/>
+                            <constraint firstAttribute="bottom" secondItem="bfE-CM-0Zu" secondAttribute="bottom" id="6ds-Rr-pJ1"/>
+                            <constraint firstAttribute="trailing" secondItem="QV4-ZY-Tkt" secondAttribute="trailing" id="DSK-b7-Cjj"/>
+                            <constraint firstAttribute="bottom" secondItem="QV4-ZY-Tkt" secondAttribute="bottom" id="RjL-MR-wX6"/>
+                            <constraint firstItem="bfE-CM-0Zu" firstAttribute="leading" secondItem="ihn-08-wyT" secondAttribute="leading" id="UDc-av-8Hs"/>
+                            <constraint firstItem="QV4-ZY-Tkt" firstAttribute="width" secondItem="ihn-08-wyT" secondAttribute="width" multiplier="0.65" id="doY-vQ-hdK"/>
+                            <constraint firstItem="bfE-CM-0Zu" firstAttribute="top" secondItem="ihn-08-wyT" secondAttribute="top" id="jaU-BX-RQh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -619,6 +665,8 @@
         <image name="add" width="32" height="32"/>
         <image name="check_off" width="33" height="33"/>
         <image name="check_on" width="33" height="33"/>
+        <image name="library_add" width="34" height="34"/>
+        <image name="library_add_h" width="34" height="34"/>
         <image name="meun" width="32" height="32"/>
         <image name="navigationbar_separeator" width="2" height="86"/>
         <image name="toolbar_add" width="46" height="46"/>
