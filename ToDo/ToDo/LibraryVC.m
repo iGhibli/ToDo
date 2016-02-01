@@ -7,23 +7,61 @@
 //
 
 #import "LibraryVC.h"
+#import "DataBaseEngine.h"
 
-@interface LibraryVC ()
+@interface LibraryVC ()<UITableViewDataSource ,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *sortTableView;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
-
+@property (nonatomic, strong) NSArray *sortSource;
+@property (nonatomic, strong) NSArray *detailSource;
 @end
 
 @implementation LibraryVC
-
+static NSString *oneCellID = @"OneCellID";
+static NSString *twoCellID = @"TwoCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.sortTableView.delegate = self;
+    self.sortTableView.dataSource = self;
+    self.detailTableView.delegate = self;
+    self.detailTableView.dataSource = self;
+    self.sortSource = @[@"行前事项" ,@"文件/备份" ,@"资金" ,@"服装", @"个护/化妆" ,@"医疗/健康" ,@"电子/数码" ,@"潜水装备" ,@"杂项" ,@"旅途备忘" ,@"自定义"];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableView
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.sortTableView) {
+        return self.sortSource.count;
+    }else {
+        return 10;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.sortTableView) {
+        return 50;
+    }else {
+        return 50;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.sortTableView) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:oneCellID];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:oneCellID];
+        }
+        cell.contentView.backgroundColor = [UIColor grayColor];
+        cell.textLabel.text = self.sortSource[indexPath.row];
+        return cell;
+    }else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:oneCellID];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:oneCellID];
+        }
+        cell.textLabel.text = @"AAAA";
+        return cell;
+    }
 }
 
 /*

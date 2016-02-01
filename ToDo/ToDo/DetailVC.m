@@ -198,7 +198,7 @@ static NSString *DetailCellID = @"detailCellID";
     if ([segue.identifier  isEqual: @"changeListInfoSegue"]) {
         [segue.destinationViewController setValue:@(self.sort) forKey:@"sort"];
     }else if ([segue.identifier isEqualToString:@"librarySegue"]) {
-        
+        [segue.destinationViewController setValue:@(self.sort) forKey:@"sort"];
     }
     
 }

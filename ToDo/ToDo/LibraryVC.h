@@ -10,4 +10,6 @@
 
 @interface LibraryVC : UIViewController
 
+@property (nonatomic, assign) int sort;
+
 @end
