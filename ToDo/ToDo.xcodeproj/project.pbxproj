@@ -22,6 +22,8 @@
 		CC4031941C5B66F200B1C2D6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4031931C5B66F200B1C2D6 /* libsqlite3.0.tbd */; };
 		CC4031971C5B88BB00B1C2D6 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4031961C5B88BB00B1C2D6 /* DetailModel.m */; };
 		CC40319B1C5B8B9A00B1C2D6 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4031991C5B8B9A00B1C2D6 /* DetailCell.m */; };
+		CC40F4551C5F63BA00AC1D30 /* ChangeListInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40F4541C5F63BA00AC1D30 /* ChangeListInfoVC.m */; };
+		CC40F4581C5F7E6300AC1D30 /* LibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC40F4571C5F7E6300AC1D30 /* LibraryVC.m */; };
 		CC7855FF1C5A00420007EA0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7855FE1C5A00420007EA0E /* main.m */; };
 		CC7856021C5A00420007EA0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7856011C5A00420007EA0E /* AppDelegate.m */; };
 		CC7856081C5A00420007EA0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7856061C5A00420007EA0E /* Main.storyboard */; };
@@ -64,6 +66,10 @@
 		CC4031981C5B8B9A00B1C2D6 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
 		CC4031991C5B8B9A00B1C2D6 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		CC40F4521C5EF0FA00AC1D30 /* PassInfoDictDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PassInfoDictDelegate.h; sourceTree = "<group>"; };
+		CC40F4531C5F63BA00AC1D30 /* ChangeListInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeListInfoVC.h; sourceTree = "<group>"; };
+		CC40F4541C5F63BA00AC1D30 /* ChangeListInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeListInfoVC.m; sourceTree = "<group>"; };
+		CC40F4561C5F7E6300AC1D30 /* LibraryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryVC.h; sourceTree = "<group>"; };
+		CC40F4571C5F7E6300AC1D30 /* LibraryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryVC.m; sourceTree = "<group>"; };
 		CC7855FA1C5A00410007EA0E /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7855FE1C5A00420007EA0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC7856001C5A00420007EA0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -187,6 +193,10 @@
 				CC4031741C5B2A6E00B1C2D6 /* DetailVC.m */,
 				CC7856231C5A36480007EA0E /* AddVC.h */,
 				CC7856241C5A36480007EA0E /* AddVC.m */,
+				CC40F4531C5F63BA00AC1D30 /* ChangeListInfoVC.h */,
+				CC40F4541C5F63BA00AC1D30 /* ChangeListInfoVC.m */,
+				CC40F4561C5F7E6300AC1D30 /* LibraryVC.h */,
+				CC40F4571C5F7E6300AC1D30 /* LibraryVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -311,12 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC40316F1C5B150C00B1C2D6 /* YRSideViewController.m in Sources */,
+				CC40F4551C5F63BA00AC1D30 /* ChangeListInfoVC.m in Sources */,
 				CC4031971C5B88BB00B1C2D6 /* DetailModel.m in Sources */,
 				CC4031751C5B2A6E00B1C2D6 /* DetailVC.m in Sources */,
 				CC4031811C5B436B00B1C2D6 /* NSString+FilePath.m in Sources */,
 				CC40318E1C5B438900B1C2D6 /* FMDatabase.m in Sources */,
 				CC78561F1C5A35D00007EA0E /* SettingVC.m in Sources */,
 				CC4031911C5B438900B1C2D6 /* FMDatabaseQueue.m in Sources */,
+				CC40F4581C5F7E6300AC1D30 /* LibraryVC.m in Sources */,
 				CC4031921C5B438900B1C2D6 /* FMResultSet.m in Sources */,
 				CC7856321C5A485F0007EA0E /* ListCell.m in Sources */,
 				CC40317E1C5B432500B1C2D6 /* DataBaseEngine.m in Sources */,

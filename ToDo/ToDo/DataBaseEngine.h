@@ -13,6 +13,8 @@
 
 + (void)saveTravelListToTravelListTable:(NSDictionary *)dict;
 
++ (ListModel *)getListModelWithListSort:(int)sort;
+
 + (NSMutableArray *)getListModelsFromDBTable;
 
 + (NSMutableArray *)getDetailModelsFromDBTableWithListID:(int)listID;
@@ -20,5 +22,7 @@
 + (NSMutableArray *)getCityAndCountryFromDBTableWithName:(NSString *)name;
 
 + (void)deleteTravelListFromTravelListTableWithSort:(NSInteger)sort;
+
++ (void)updataTraveListWithInfoDict:(NSDictionary *)dict;
 
 @end

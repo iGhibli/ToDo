@@ -1,17 +1,14 @@
 //
-//  AddVC.h
+//  ChangeListInfoVC.h
 //  ToDo
 //
-//  Created by qingyun on 16/1/28.
+//  Created by qingyun on 16/2/1.
 //  Copyright © 2016年 qingyun. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AddVC : UIViewController
-
+@interface ChangeListInfoVC : UIViewController
 @property (nonatomic, assign) int sort;
 
 @end
-
-

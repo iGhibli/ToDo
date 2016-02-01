@@ -12,6 +12,7 @@
 #import "DetailCell.h"
 #import "Common.h"
 #import "AddVC.h"
+#import "ChangeListInfoVC.h"
 
 @interface DetailVC ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -121,15 +122,6 @@ static NSString *DetailCellID = @"detailCellID";
     
 }
 
-- (IBAction)addFromAction:(UIButton *)sender {
-    
-}
-
-- (IBAction)changeListInfo:(UIButton *)sender {
-    AddVC *VC = [self.storyboard instantiateViewControllerWithIdentifier:@"addVCID"];
-//    self
-}
-
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -200,14 +192,15 @@ static NSString *DetailCellID = @"detailCellID";
 */
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - PushSegue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier  isEqual: @"changeListInfoSegue"]) {
+        [segue.destinationViewController setValue:@(self.sort) forKey:@"sort"];
+    }else if ([segue.identifier isEqualToString:@"librarySegue"]) {
+        
+    }
+    
 }
-*/
 
 @end

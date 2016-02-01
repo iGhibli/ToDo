@@ -56,6 +56,17 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     return columns;
 }
 
++ (void)updataTraveListWithInfoDict:(NSDictionary *)dict
+{
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+//    NSString *SQLStr = [NSString stringWithFormat:@"update travellist SET name=%@ ,image=%@ ,sort=%d ,relatedpoi=%@ where sort=%d;",dict[@"name"] ,dict[@"image"] ,[dict[@"sort"] intValue] ,dict[@"relatedpoi"] ,[dict[@"sort"] intValue]];
+    //使用queue提供一个DB
+    [queue inDatabase:^(FMDatabase *db) {
+        BOOL result = [db executeUpdate:@"update travellist SET name=:name ,image=:image ,sort=:sort ,relatedpoi=:relatedpoi where sort=:sort;" withParameterDictionary:dict];
+        NSLog(@"%d",result);
+    }];
+}
+
 + (void)saveTravelListToTravelListTable:(NSDictionary *)dict {
     //插入操作，首先创建db对象，写sql语句，执行操作
     //使用队列queue，创建DB
@@ -118,6 +129,27 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
     //释放资源
     [db close];
     return dictArray;
+}
+
++ (ListModel *)getListModelWithListSort:(int)sort {
+    //创建数据库
+    FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    //打开数据库
+    [db open];
+    //查询语句
+    NSString *sqlString = [NSString stringWithFormat:@"select * from %@ where sort = %d;",kTravelList ,sort];
+    //查询并输出结果
+    FMResultSet *result = [db executeQuery:sqlString];
+    NSMutableArray *dictArray = [NSMutableArray array];
+    while ([result next]) {
+        //将一条记录转化为一个字典
+        NSDictionary *dict = [result resultDictionary];
+        ListModel *listModel = [[ListModel alloc] initListModelWithDict:dict];
+        [dictArray addObject:listModel];
+    }
+    //释放资源
+    [db close];
+    return dictArray.firstObject;
 }
 
 + (NSMutableArray *)getListModelsFromDBTable {

@@ -78,9 +78,9 @@ static NSString *homeCellID = @"homeCellID";
 
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier  isEqual: @"detailSegue"]) {
+    if ([segue.identifier isEqual: @"detailSegue"]) {
         [segue.destinationViewController setValue:self.currentModel.sort forKey:@"sort"];
-    }else if ([segue.identifier  isEqual: @"addSegue"]) {
+    }else if ([segue.identifier isEqual: @"addSegue"]) {
         ListModel *model = self.sourceArray.lastObject;
         [segue.destinationViewController setValue:model.sort forKey:@"sort"];
     }

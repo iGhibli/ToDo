@@ -1,33 +1,33 @@
 //
-//  AddVC.m
+//  ChangeListInfoVC.m
 //  ToDo
 //
-//  Created by qingyun on 16/1/28.
+//  Created by qingyun on 16/2/1.
 //  Copyright © 2016年 qingyun. All rights reserved.
 //
 
-#import "AddVC.h"
-#import "Common.h"
+#import "ChangeListInfoVC.h"
 #import "DataBaseEngine.h"
+#import "Common.h"
+#import "ListModel.h"
 
-@interface AddVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
-
+@interface ChangeListInfoVC ()<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *imageBtn;
 @property (weak, nonatomic) IBOutlet UITextField *listName;
 @property (weak, nonatomic) IBOutlet UITextField *listAdress;
 @property (nonatomic, strong) UIImage *selectImage;
-
+@property (nonatomic, strong) ListModel *currentModel;
 @end
 
-@implementation AddVC
+@implementation ChangeListInfoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor orangeColor];
-}
-
-- (IBAction)backAction:(UIBarButtonItem *)sender {
-    
+    _currentModel = [DataBaseEngine getListModelWithListSort:self.sort];
+    [_imageBtn setBackgroundImage:[UIImage imageWithData:(NSData *)_currentModel.image] forState:UIControlStateNormal];
+    _listName.text = _currentModel.name;
+    _listAdress.text = _currentModel.relatedpoi;
+    _selectImage = [UIImage imageWithData:(NSData *)_currentModel.image];
 }
 
 - (IBAction)addImageAction:(UIButton *)sender {
@@ -75,14 +75,11 @@
         [infoDict setValue:data forKey:@"image"];
         [infoDict setValue:_listName.text forKey:@"name"];
         [infoDict setValue:_listAdress.text forKey:@"relatedpoi"];
-        [infoDict setValue:@(self.sort + 1) forKey:@"sort"];
-        [DataBaseEngine saveTravelListToTravelListTable:infoDict];
+        [infoDict setValue:@(self.sort) forKey:@"sort"];
+        [DataBaseEngine updataTraveListWithInfoDict:infoDict];
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
-}
-
-- (IBAction)cancelAction:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //调用相机和图库
@@ -107,7 +104,7 @@
         imagePickerController.allowsEditing = YES;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
         
-        [self presentViewController:imagePickerController animated:YES completion:^{}];        
+        [self presentViewController:imagePickerController animated:YES completion:^{}];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
@@ -137,5 +134,15 @@
     self.selectImage = image;
     [self.imageBtn setBackgroundImage:image forState:UIControlStateNormal];
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
