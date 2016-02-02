@@ -25,4 +25,6 @@
 
 + (void)updataTraveListWithInfoDict:(NSDictionary *)dict;
 
++ (NSMutableArray *)getItermModelsFromDBTableWithFenleiid:(NSInteger)index;
+
 @end

@@ -11,6 +11,7 @@
 #import "NSString+FilePath.h"
 #import "ListModel.h"
 #import "DetailModel.h"
+#import "ItermModel.h"
 #import "Common.h"
 
 static NSArray *statusTableColumn;     //保存status表中的所有字段
@@ -217,6 +218,29 @@ static NSArray *statusTableColumn;     //保存status表中的所有字段
         BOOL result = [db executeUpdate:SQLString];
         NSLog(@"%d>>>>%@",result, SQLString);
     }];
+}
+
++ (NSMutableArray *)getItermModelsFromDBTableWithFenleiid:(NSInteger)index
+{
+    //创建数据库
+    FMDatabase *db = [FMDatabase databaseWithPath:[NSString filePathInDocumentsWithFileName:kDBFileName]];
+    //打开数据库
+    [db open];
+    //查询语句
+    NSString *sqlString = [NSString stringWithFormat:@"select * from %@ where fenleiid = %d;",kFenLeiAndIterm ,index];
+    //查询并输出结果
+    FMResultSet *result = [db executeQuery:sqlString];
+    NSMutableArray *modelArray = [NSMutableArray array];
+    while ([result next]) {
+        //将一条记录转化为一个字典
+        NSDictionary *dict = [result resultDictionary];
+        ItermModel *model = [[ItermModel alloc]initItermModelWithDict:dict];
+        [modelArray addObject:model];
+    }
+    //释放资源
+    [db close];
+    
+    return modelArray;
 }
 
 @end

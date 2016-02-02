@@ -29,6 +29,12 @@ static NSString *twoCellID = @"TwoCellID";
     self.sortSource = @[@"行前事项" ,@"文件/备份" ,@"资金" ,@"服装", @"个护/化妆" ,@"医疗/健康" ,@"电子/数码" ,@"潜水装备" ,@"杂项" ,@"旅途备忘" ,@"自定义"];
 }
 
+- (void)refreshDetailTableViewWithSortTableViewCellIndex:(NSInteger)index
+{
+    self.detailSource = [DataBaseEngine getItermModelsFromDBTableWithFenleiid:index];
+    [self.detailTableView reloadData];
+}
+
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.sortTableView) {

@@ -28,6 +28,10 @@
 #define kIscheck            @"ischeck"
 #define kItermsort          @"itermsort"
 
+/*  ItermModel  */
+#define kFenleiid           @"fenleiid"
+#define kIsuseradd          @"isuseradd"
+
 /*  DBTableName  */
 #define kDBFileName                 @"ToDoData.sqlite3"     //数据库文件名
 #define kTravelList                 @"travellist"           //清单列表
