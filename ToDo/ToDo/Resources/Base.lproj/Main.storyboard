@@ -206,12 +206,14 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="JG6-hR-Fru">
+                            <color key="tintColor" systemColor="systemBlueColor"/>
                             <connections>
                                 <action selector="doneAction:" destination="EQU-iJ-HOT" id="khD-h6-aAw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBtnItem" destination="JG6-hR-Fru" id="cs0-yv-wxe"/>
                         <outlet property="inputBgView" destination="fDC-Nr-cmw" id="tme-xS-nW8"/>
                         <outlet property="inputTF" destination="y6G-PM-3NO" id="AI1-8h-fb3"/>
                         <outlet property="selectedIcon" destination="ufS-aY-nhd" id="OTn-sY-vba"/>
@@ -228,6 +230,9 @@
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

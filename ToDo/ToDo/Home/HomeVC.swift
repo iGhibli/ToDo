@@ -15,6 +15,8 @@ class HomeVC: UIViewController {
     
     static let ScreenW = UIScreen.main.bounds.width
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     lazy var squareItems = [SquareModel]()
     
     lazy var items = [ListsModel]()
@@ -54,10 +56,6 @@ class HomeVC: UIViewController {
         
         let documentPath1 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
         print("documentDirectory: ", documentPath1)
-
-        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        let context = appDelegate.persistentContainer.viewContext
-        
         do {
             lists = try context.fetch(List.fetchRequest())
             print("--- ", lists)
@@ -66,24 +64,28 @@ class HomeVC: UIViewController {
             print("Error: ", error)
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(<#T##@objc method#>), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: context)
-        NotificationCenter.default.addObserver(self, selector: Selector(("dataWillSave")), name: NSNotification.Name.NSManagedObjectContextWillSave, object: context)
-        NotificationCenter.default.addObserver(self, selector: Selector(("dataDidSave")), name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: context)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataWillSave(notification:)), name: NSNotification.Name.NSManagedObjectContextWillSave, object: context)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataDidSave(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: context)
     }
     
-    func dataDidChange() {
-//        print("--- dataDidChange: ", notification)
-        print("--- dataDidChange: ")
+    @objc func dataDidChange(notification: Notification) {
+        print("--- dataDidChange: ", notification)
+        do {
+            lists = try context.fetch(List.fetchRequest())
+            print("--- ", lists)
+            table.reloadData()
+        } catch {
+            print("Error: ", error)
+        }
     }
     
-    func dataWillSave() {
-//        print("--- dataWillSave: ", notification)
-        print("--- dataWillSave: ")
+    @objc func dataWillSave(notification: Notification) {
+        print("--- dataWillSave: ", notification)
     }
     
-    func dataDidSave() {
-//        print("--- dataDidSave: ", notification)
-        print("--- dataDidSave: ")
+    @objc func dataDidSave(notification: Notification) {
+        print("--- dataDidSave: ", notification)
     }
     
     

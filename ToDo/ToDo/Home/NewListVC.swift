@@ -13,14 +13,16 @@ class NewListVC: UIViewController {
     @IBOutlet weak var selectedIcon: UIImageView!
     @IBOutlet weak var inputBgView: UIView!
     @IBOutlet weak var inputTF: UITextField!
+    @IBOutlet weak var doneBtnItem: UIBarButtonItem!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 隐藏导航栏背景色和线条
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationItem.leftBarButtonItem?.target = self
-//        navigationController?.navigationItem.leftBarButtonItem?.action = Selector("cancelAction")
+        doneBtnItem.isEnabled = false
         
         selectedIconBg.clipsToBounds = true
         selectedIconBg.layer.cornerRadius = 50.0
@@ -30,33 +32,48 @@ class NewListVC: UIViewController {
         inputTF.becomeFirstResponder()
 //        inputTF.textColor = .red
         inputTF.returnKeyType = .done
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChange(notification:)), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
+    @objc func textFieldTextDidChange(notification: Notification) {
+        if let textField: UITextField = notification.object as? UITextField {
+            if let strCount = textField.text?.count, strCount > 0 {
+                doneBtnItem.isEnabled = true
+            }else {
+                doneBtnItem.isEnabled = false
+            }
+        }
     }
     
     // MARK: - Actions
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         if let strCount = inputTF.text?.count, strCount > 0 {
             let alertC: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alertC.addAction(UIAlertAction(title: "Discard Changes", style: .default, handler: { (alertAction) in
+            alertC.addAction(UIAlertAction(title: "Discard Changes", style: .destructive, handler: { (alertAction) in
                 self.navigationController?.dismiss(animated: true, completion: nil)
             }))
+            alertC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alertC, animated: true, completion: nil)
+        }else {
+            self.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         inputTF.resignFirstResponder()
-        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        let context = appDelegate.persistentContainer.viewContext
+
         let newList = List(context: context)
         newList.title = inputTF.text ?? ""
         newList.count = "10"
         newList.icon = "iconTest"
-        newList.color = "red"
+        newList.color = "\(ListColor.red)"
         
         do {
             try context.save()
-            print("Save successed!")
+            print("CoreData Save successed!")
         } catch {
-            print("Save Error: ", error)
+            print("CoreData Save Error: ", error)
         }
         
         navigationController?.dismiss(animated: true, completion: nil)
@@ -66,9 +83,9 @@ class NewListVC: UIViewController {
 
 extension NewListVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let strCount: Int  = textField.text?.count ?? 0
         if textField == inputTF {
-            if strCount >= 10 {
+            let strCount: Int  = textField.text?.count ?? 0
+            if strCount >= 10, string.count > 0 {
                 return false
             }
         }
