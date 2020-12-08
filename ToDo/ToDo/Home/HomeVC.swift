@@ -55,13 +55,13 @@ class HomeVC: UIViewController {
         }
         
         let documentPath1 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
-        print("documentDirectory: ", documentPath1)
+        Logger.info("documentDirectory: \(documentPath1)")
         do {
             lists = try context.fetch(List.fetchRequest())
-            print("--- ", lists)
+            Logger.success("CoreData Fecth Success: \(lists)")
             table.reloadData()
         } catch {
-            print("Error: ", error)
+            Logger.error("CoreData Fecth Error: \(error)")
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(dataDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: context)
@@ -70,22 +70,21 @@ class HomeVC: UIViewController {
     }
     
     @objc func dataDidChange(notification: Notification) {
-        print("--- dataDidChange: ", notification)
         do {
             lists = try context.fetch(List.fetchRequest())
-            print("--- ", lists)
+            Logger.success("CoreData Fetch Success: \(lists)")
             table.reloadData()
         } catch {
-            print("Error: ", error)
+            Logger.error("CoreData Fetch Error: \(error)")
         }
     }
     
     @objc func dataWillSave(notification: Notification) {
-        print("--- dataWillSave: ", notification)
+        Logger.info("dataWillSave: \(notification)")
     }
     
     @objc func dataDidSave(notification: Notification) {
-        print("--- dataDidSave: ", notification)
+        Logger.info("dataDidSave: \(notification)")
     }
     
     
@@ -111,13 +110,12 @@ extension HomeVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ListsCell.reuseIdentifier, for: indexPath) as! ListsCell
-//        cell.listsModel = items[indexPath.row]
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListsCell.reuseIdentifier, for: indexPath) as! ListsCell        
         let list: List = lists[indexPath.row]
 
         var model: ListsModel = ListsModel()
         model.icon = list.icon!
+        model.color = list.color!
         model.title = list.title!
         model.count = Int(list.count!)!
         

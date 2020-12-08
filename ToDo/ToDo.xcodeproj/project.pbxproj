@@ -27,6 +27,9 @@
 		B96AEFC5257631AD00B50BA4 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AEFC4257631AD00B50BA4 /* HeaderView.swift */; };
 		B96AEFD32576380900B50BA4 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96AEFD22576380900B50BA4 /* HeaderView.xib */; };
 		B96AF00125779A1100B50BA4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B96AF00025779A1100B50BA4 /* CoreData.framework */; };
+		B973867C257DD11900B44075 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B973867B257DD11900B44075 /* Logger.swift */; };
+		B9738689257E599400B44075 /* NewListCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9738687257E599400B44075 /* NewListCVCell.swift */; };
+		B9738695257F2AA300B44075 /* NewListCVLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9738694257F2AA300B44075 /* NewListCVLayout.swift */; };
 		B9AB82462578C48900617512 /* NewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB82452578C48900617512 /* NewListVC.swift */; };
 		DFA2B5AF183DD81C72A57DF4 /* Pods_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37F2812FD6955E6385E4D4D /* Pods_ToDo.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +80,9 @@
 		B96AEFC4257631AD00B50BA4 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		B96AEFD22576380900B50BA4 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		B96AF00025779A1100B50BA4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B973867B257DD11900B44075 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		B9738687257E599400B44075 /* NewListCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListCVCell.swift; sourceTree = "<group>"; };
+		B9738694257F2AA300B44075 /* NewListCVLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListCVLayout.swift; sourceTree = "<group>"; };
 		B9AB82452578C48900617512 /* NewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListVC.swift; sourceTree = "<group>"; };
 		C37F2812FD6955E6385E4D4D /* Pods_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -142,6 +148,7 @@
 		B96AEE3925726E7000B50BA4 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				B973867A257DD0F200B44075 /* Tools */,
 				B96AEED3257361E900B50BA4 /* Home */,
 				B96AEECF257361A100B50BA4 /* Main */,
 				B96AEEC225735DEE00B50BA4 /* Resources */,
@@ -219,8 +226,18 @@
 				B96AEF912574D9BE00B50BA4 /* ListsCell.swift */,
 				B96AEF922574D9BE00B50BA4 /* ListsCell.xib */,
 				B96AEF042573B17700B50BA4 /* SquareView.swift */,
+				B9738687257E599400B44075 /* NewListCVCell.swift */,
+				B9738694257F2AA300B44075 /* NewListCVLayout.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B973867A257DD0F200B44075 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B973867B257DD11900B44075 /* Logger.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		CD21AD9BE74D86685DABA737 /* Pods */ = {
@@ -410,7 +427,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96AEE3F25726E7000B50BA4 /* ViewController.swift in Sources */,
+				B9738689257E599400B44075 /* NewListCVCell.swift in Sources */,
 				B96AEED5257362F200B50BA4 /* HomeVC.swift in Sources */,
+				B9738695257F2AA300B44075 /* NewListCVLayout.swift in Sources */,
 				B96AEEF2257387A300B50BA4 /* DictumCell.swift in Sources */,
 				B96AEE3B25726E7000B50BA4 /* AppDelegate.swift in Sources */,
 				B96AEF052573B17700B50BA4 /* SquareView.swift in Sources */,
@@ -418,6 +437,7 @@
 				B96AEE3D25726E7000B50BA4 /* SceneDelegate.swift in Sources */,
 				B96AEFC5257631AD00B50BA4 /* HeaderView.swift in Sources */,
 				B96AEFAA25752AAB00B50BA4 /* SquareModel.swift in Sources */,
+				B973867C257DD11900B44075 /* Logger.swift in Sources */,
 				B9AB82462578C48900617512 /* NewListVC.swift in Sources */,
 				B96AEE4525726E7000B50BA4 /* ToDo.xcdatamodeld in Sources */,
 				B96AEEE42573668600B50BA4 /* ListsModel.swift in Sources */,

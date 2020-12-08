@@ -11,59 +11,90 @@ struct ListsModel {
     var icon: String = ""
     var title: String = ""
     var count: Int = 0
-    var color = ListColor.red    
+    var color: String = "red"
 }
 
-enum ListIcon {
-    case list
+/*
+enum ListIcon: String {
+    case list = "list.bullet"
+    case bookmark = "bookmark.fill"
+    case mappin = "mappin"
+    case gift = "gift.fill"
+    case graduationcap = "graduationcap.fill"
+    case doc = "doc.fill"
+    case book = "book.fill"
+    case creditcard = "creditcard.fill"
+    case walk = "figure.walk"
+    case stethoscope = "stethoscope"
+    case pills = "pills.fill"
+    case house = "house.fill"
+    case building2 = "building.2.fill"
+    case building = "building.columns.fill"
+    case gamecontroller = "gamecontroller.fill"
+    case headphones = "headphones"
+    case leaf = "leaf.fill"
+    case desktopcomputer = "desktopcomputer"
+    case laptopcomputer = "laptopcomputer"
+    case cart = "cart.fill"
+    case airplane = "airplane"
+    case tram = "tram.fill"
+    case umbrella = "umbrella.fill"
+    case sun = "sun.max.fill"
+    case moon = "moon.fill"
+    case snow = "snow"
+    case flame = "flame.fill"
+    case briefcase = "briefcase.fill"
+    case terminal = "terminal.fill"
+    case curlybraces = "curlybraces"
+    case paintpalette = "paintpalette.fill"
 }
 
-// 默认枚举不能直接用UIColor作为原始值
-enum ListColor {
-    case red
-    case orange
-    case yellow
-    case green
-    case teal
-    case blue
-    case purple
-    case pink
-    case indigo
-    case gray
-}
+let ListColor: [String: UIColor] = ["red": .red,
+                                 "orange": .orange,
+                                 "yellow": .yellow,
+                                 "green": .green,
+                                 "teal": .systemTeal,
+                                 "blue": .blue,
+                                 "purple": .purple,
+                                 "pink": .systemPink,
+                                 "indigo": .systemIndigo,
+                                 "gray": .systemGray]
+*/
 
-// 通过遵守协议RawRepresentable可以把UIColor作为原始值
-extension ListColor: RawRepresentable {
-    typealias RawValue = UIColor
-    
-    init?(rawValue: RawValue) {
-        switch rawValue {
-        case UIColor.red: self = .red
-        case UIColor.orange: self = .orange
-        case UIColor.yellow: self = .yellow
-        case UIColor.green: self = .green
-        case UIColor.systemTeal: self = .teal
-        case UIColor.blue: self = .blue
-        case UIColor.purple: self = .purple
-        case UIColor.systemPink: self = .pink
-        case UIColor.systemIndigo: self = .indigo
-        case UIColor.systemGray: self = .gray
-        default: return nil
-        }
-    }
-    
-    var rawValue: RawValue {
-        switch self {
-        case .red: return UIColor.red
-        case .orange: return UIColor.orange
-        case .yellow: return UIColor.yellow
-        case .green: return UIColor.green
-        case .teal: return UIColor.systemTeal
-        case .blue: return UIColor.blue
-        case .purple: return UIColor.purple
-        case .pink: return UIColor.systemPink
-        case .indigo: return UIColor.systemIndigo
-        case .gray: return UIColor.systemGray
-        }
-    }
-}
+let ListColorStr: [String] = ["red", "orange", "yellow", "green", "teal", "blue", "purple", "pink", "indigo", "gray"]
+let ListColor: [UIColor] = [.red, .orange, .yellow, .green, .systemTeal, .blue, .purple, .systemPink, .systemIndigo, .systemGray]
+
+
+let ListIcon: [String] = [
+    "list.bullet",
+    "bookmark.fill",
+    "mappin",
+    "gift.fill",
+    "graduationcap.fill",
+    "doc.fill",
+    "book.fill",
+    "creditcard.fill",
+    "figure.walk",
+    "stethoscope",
+    "pills.fill",
+    "house.fill",
+    "building.2.fill",
+    "building.columns.fill",
+    "gamecontroller.fill",
+    "headphones",
+    "leaf.fill",
+    "desktopcomputer",
+    "laptopcomputer",
+    "cart.fill",
+    "airplane",
+    "tram.fill",
+    "umbrella.fill",
+    "sun.max.fill",
+    "moon.fill",
+    "snow",
+    "flame.fill",
+    "briefcase.fill",
+    "terminal.fill",
+    "curlybraces",
+    "paintpalette.fill"
+]

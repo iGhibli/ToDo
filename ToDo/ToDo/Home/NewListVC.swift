@@ -14,6 +14,7 @@ class NewListVC: UIViewController {
     @IBOutlet weak var inputBgView: UIView!
     @IBOutlet weak var inputTF: UITextField!
     @IBOutlet weak var doneBtnItem: UIBarButtonItem!
+    @IBOutlet weak var collection: UICollectionView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -32,6 +33,8 @@ class NewListVC: UIViewController {
         inputTF.becomeFirstResponder()
 //        inputTF.textColor = .red
         inputTF.returnKeyType = .done
+        
+        collection.register(NewListCVCell.self, forCellWithReuseIdentifier: NewListCVCell.reuseIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChange(notification:)), name: UITextField.textDidChangeNotification, object: nil)
     }
@@ -67,13 +70,13 @@ class NewListVC: UIViewController {
         newList.title = inputTF.text ?? ""
         newList.count = "10"
         newList.icon = "iconTest"
-        newList.color = "\(ListColor.red)"
+        newList.color = "green"
         
         do {
             try context.save()
-            print("CoreData Save successed!")
+            Logger.success("CoreData Save successed!")
         } catch {
-            print("CoreData Save Error: ", error)
+            Logger.error("CoreData Save Error: \(error)")
         }
         
         navigationController?.dismiss(animated: true, completion: nil)
@@ -100,5 +103,36 @@ extension NewListVC: UITextFieldDelegate {
         }else {
             return false
         }
+    }
+}
+
+// MARK: - UICollectionView
+extension NewListVC: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return min(ListColorStr.count, ListColor.count)
+        }else {
+            return ListIcon.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewListCVCell.reuseIdentifier, for: indexPath) as! NewListCVCell
+        if indexPath.section == 0 {
+            cell.listType = .color(ListColor[indexPath.item])
+        }else {
+            cell.listType = .icon(ListIcon[indexPath.item])
+        }
+        return cell
+    }
+}
+
+extension NewListVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 点击事件
     }
 }

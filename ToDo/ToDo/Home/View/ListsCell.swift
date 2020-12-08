@@ -19,6 +19,7 @@ class ListsCell: UITableViewCell {
             icon.image = UIImage(systemName: listsModel.icon)
             item.text = listsModel.title
             count.text = "\(listsModel.count)"
+            iconBg.backgroundColor = ListColor[ListColorStr.firstIndex(of: listsModel.color) ?? 0]
         }
     }
     
