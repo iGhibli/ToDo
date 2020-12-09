@@ -33,9 +33,9 @@ class NewListCVCell: UICollectionViewCell {
         return icon
     }()
     
-    var listType: NewListCVCellType = .color(.red) {
+    var cellType: NewListCVCellType = .color(.red) {
         didSet {
-            switch listType {
+            switch cellType {
             case let .color(color):
                 icon.isHidden = true
                 topBg.backgroundColor = color
@@ -48,12 +48,20 @@ class NewListCVCell: UICollectionViewCell {
         }
     }
     
+    var cellIsSelect: Bool = false {
+        didSet {
+            selectBg.isHidden = !cellIsSelect
+        }
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.addSubview(selectBg)
-        selectBg.addSubview(topBg)
+        self.addSubview(topBg)
         topBg.addSubview(icon)
+        selectBg.isHidden = true
     }
     
     override func layoutSubviews() {

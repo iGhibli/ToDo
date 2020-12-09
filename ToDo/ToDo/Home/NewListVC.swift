@@ -16,6 +16,9 @@ class NewListVC: UIViewController {
     @IBOutlet weak var doneBtnItem: UIBarButtonItem!
     @IBOutlet weak var collection: UICollectionView!
     
+    var colorSelectedIndex: Int = 0
+    var iconSelectedIndex: Int = 0
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -31,8 +34,11 @@ class NewListVC: UIViewController {
         inputBgView.layer.cornerRadius = 8.0
         
         inputTF.becomeFirstResponder()
-//        inputTF.textColor = .red
         inputTF.returnKeyType = .done
+        
+        inputTF.textColor = ListColor[colorSelectedIndex]
+        selectedIconBg.backgroundColor = ListColor[colorSelectedIndex]
+        selectedIcon.image = UIImage(systemName: ListIcon[iconSelectedIndex], withConfiguration: UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.bold))
         
         collection.register(NewListCVCell.self, forCellWithReuseIdentifier: NewListCVCell.reuseIdentifier)
         
@@ -68,9 +74,9 @@ class NewListVC: UIViewController {
 
         let newList = List(context: context)
         newList.title = inputTF.text ?? ""
-        newList.count = "10"
-        newList.icon = "iconTest"
-        newList.color = "green"
+        newList.count = "0"
+        newList.icon = ListIcon[iconSelectedIndex]
+        newList.color = ListColorStr[colorSelectedIndex]
         
         do {
             try context.save()
@@ -123,9 +129,11 @@ extension NewListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewListCVCell.reuseIdentifier, for: indexPath) as! NewListCVCell
         if indexPath.section == 0 {
-            cell.listType = .color(ListColor[indexPath.item])
+            cell.cellType = .color(ListColor[indexPath.item])
+            cell.cellIsSelect = indexPath.item == colorSelectedIndex
         }else {
-            cell.listType = .icon(ListIcon[indexPath.item])
+            cell.cellType = .icon(ListIcon[indexPath.item])
+            cell.cellIsSelect = indexPath.item == iconSelectedIndex
         }
         return cell
     }
@@ -134,5 +142,23 @@ extension NewListVC: UICollectionViewDataSource {
 extension NewListVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 点击事件
+        if indexPath.section == 0, indexPath.item != colorSelectedIndex {
+            let oldSelectCell: NewListCVCell = collectionView.cellForItem(at: IndexPath(item: colorSelectedIndex, section: 0)) as! NewListCVCell
+            oldSelectCell.cellIsSelect = false
+            colorSelectedIndex = indexPath.item
+            inputTF.textColor = ListColor[colorSelectedIndex]
+            selectedIconBg.backgroundColor = ListColor[colorSelectedIndex]
+            let newSelectCell: NewListCVCell = collectionView.cellForItem(at: indexPath) as! NewListCVCell
+            newSelectCell.cellIsSelect = true
+        }else if indexPath.section == 1, indexPath.item != iconSelectedIndex {
+            let oldSelectCell: NewListCVCell = collectionView.cellForItem(at: IndexPath(item: iconSelectedIndex, section: 1)) as! NewListCVCell
+            oldSelectCell.cellIsSelect = false
+            iconSelectedIndex = indexPath.item
+            selectedIcon.image = UIImage(systemName: ListIcon[iconSelectedIndex], withConfiguration: UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.bold))
+            let newSelectCell: NewListCVCell = collectionView.cellForItem(at: indexPath) as! NewListCVCell
+            newSelectCell.cellIsSelect = true
+        }else {
+            
+        }
     }
 }
