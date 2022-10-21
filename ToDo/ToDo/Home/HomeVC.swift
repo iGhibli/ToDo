@@ -147,7 +147,8 @@ extension HomeVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let newReminderVC: NewReminderVC = NewReminderVC()
+        self.navigationController?.pushViewController(newReminderVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

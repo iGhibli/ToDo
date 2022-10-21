@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gAC-9q-q4O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gAC-9q-q4O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -85,6 +85,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6Q-rv-vEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="187" y="-117"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pD3-HX-epq">
+            <objects>
+                <viewController id="NiW-Zw-Pea" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cfx-Eu-l1K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uol-bC-mSY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="alB-vz-1Rn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="943" y="-117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="w9z-nC-VNi">
@@ -213,7 +228,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collection" destination="HWv-d1-Hvl" id="Od0-dY-yG3"/>
-                        <outlet property="doneBtnItem" destination="JG6-hR-Fru" id="cs0-yv-wxe"/>
+                        <outlet property="doneBtnItem" destination="JG6-hR-Fru" id="zvv-ZI-QCP"/>
                         <outlet property="inputBgView" destination="fDC-Nr-cmw" id="tme-xS-nW8"/>
                         <outlet property="inputTF" destination="y6G-PM-3NO" id="AI1-8h-fb3"/>
                         <outlet property="selectedIcon" destination="ufS-aY-nhd" id="OTn-sY-vba"/>

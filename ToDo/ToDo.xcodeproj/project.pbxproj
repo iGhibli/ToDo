@@ -30,6 +30,7 @@
 		B973867C257DD11900B44075 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B973867B257DD11900B44075 /* Logger.swift */; };
 		B9738689257E599400B44075 /* NewListCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9738687257E599400B44075 /* NewListCVCell.swift */; };
 		B9738695257F2AA300B44075 /* NewListCVLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9738694257F2AA300B44075 /* NewListCVLayout.swift */; };
+		B97386A32580C40E00B44075 /* NewReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97386A22580C40E00B44075 /* NewReminderVC.swift */; };
 		B9AB82462578C48900617512 /* NewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB82452578C48900617512 /* NewListVC.swift */; };
 		DFA2B5AF183DD81C72A57DF4 /* Pods_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37F2812FD6955E6385E4D4D /* Pods_ToDo.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		B973867B257DD11900B44075 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B9738687257E599400B44075 /* NewListCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListCVCell.swift; sourceTree = "<group>"; };
 		B9738694257F2AA300B44075 /* NewListCVLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListCVLayout.swift; sourceTree = "<group>"; };
+		B97386A22580C40E00B44075 /* NewReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderVC.swift; sourceTree = "<group>"; };
 		B9AB82452578C48900617512 /* NewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListVC.swift; sourceTree = "<group>"; };
 		C37F2812FD6955E6385E4D4D /* Pods_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -203,6 +205,7 @@
 				B96AEEE22573666B00B50BA4 /* Model */,
 				B96AEED4257362F200B50BA4 /* HomeVC.swift */,
 				B9AB82452578C48900617512 /* NewListVC.swift */,
+				B97386A22580C40E00B44075 /* NewReminderVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				B96AEEF2257387A300B50BA4 /* DictumCell.swift in Sources */,
 				B96AEE3B25726E7000B50BA4 /* AppDelegate.swift in Sources */,
 				B96AEF052573B17700B50BA4 /* SquareView.swift in Sources */,
+				B97386A32580C40E00B44075 /* NewReminderVC.swift in Sources */,
 				B96AEF932574D9BE00B50BA4 /* ListsCell.swift in Sources */,
 				B96AEE3D25726E7000B50BA4 /* SceneDelegate.swift in Sources */,
 				B96AEFC5257631AD00B50BA4 /* HeaderView.swift in Sources */,
@@ -628,7 +632,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.IGHIBLI.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = neibu2_20200919_dev;
+				PROVISIONING_PROFILE_SPECIFIER = neibu2_20210115_dev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -651,7 +655,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.IGHIBLI.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = neibu2_20200919_dev;
+				PROVISIONING_PROFILE_SPECIFIER = neibu2_20210115_dev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
